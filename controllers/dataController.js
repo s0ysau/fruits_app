@@ -6,9 +6,9 @@ const dataController = {
     index(req, res, next){
         Fruit.find({}, (err, foundFruits) => {
             if(err){
-               res.status(400).send({
-                msg: err.message
-               }) 
+                res.status(400).send({
+                    msg: err.message
+                }) 
             } else {
                 res.locals.data.fruits = foundFruits
                 next()
