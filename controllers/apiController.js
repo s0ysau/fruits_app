@@ -1,8 +1,8 @@
 const apiController = {
-  index(req, res, next){
+  index (req, res, next) {
     res.json(res.locals.data.fruits)
   },
-  show(req, res, next){
+  show (req, res, next) {
     res.json(res.locals.data.fruit)
   }
 }

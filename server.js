@@ -4,11 +4,13 @@ const express = require('express')
 const methodOverride = require('method-override')
 const db = require('./models/db')
 const app = express()
+const cors = require('cors')
 
 // Configure the app (app.set)
 /* Start Config */
 // Creates res.locals.data
 app.use(express.urlencoded({ extended: true })) // This code makes us have req.body
+app.use(cors())
 app.use(express.json())
 app.use((req, res, next) => {
   res.locals.data = {}
@@ -22,12 +24,12 @@ db.once('open', () => {
   console.log('connected to MongoDB Atlas')
 })
 
-
 app.use(methodOverride('_method')) // Allows override method
 app.use(express.static('public'))
 
-//setting up /fruits as the entry 
+// setting up /fruits as the entry
 app.use('/fruits', require('./controllers/routeController'))
+app.use('/user', require('./controllers/authController'))
 /* END Middleware */
 
 // Tell the app to listen on a port

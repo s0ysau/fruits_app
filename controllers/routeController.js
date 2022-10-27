@@ -19,7 +19,6 @@ router.post('/api', dataController.create, apiController.show)
 // Show
 router.get('/api/:id', dataController.show, apiController.show)
 
-
 // Non API Route
 // Index
 router.get('/', dataController.index, viewController.index)
